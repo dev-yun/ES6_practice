@@ -44,4 +44,3 @@ var info2 = {
 };
 info2.getName();     // this가 정적으로 바인딩되어 info2의 상위 스코프인 window를 가리키고 'yun'이 출력된다.
 
-
