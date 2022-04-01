@@ -23,6 +23,7 @@ let str = "b";
 console.log(array.includes(str));
 
 // 4. indexOf : 임의의 값이 주어진 배열의 몇번째에 존재하는지 반환. (없으면 -1)
+// indexOf가 첫번째값 즉, 0을 반환시 False처리가 되는 경우가 있어 이를 보완하기 위해 includes가 등장함
 console.log(array.indexOf(str));    // 1
 
 // 5. findIndex : 조건에 맞는 배열의 인덱스 번호를 반환
