@@ -1,4 +1,4 @@
-// 8. 동기, 비동기
+// 1. 동기, 비동기
 // 동기 : Thread가 작업의 순서대로 하나씩 실행하는 방법 (javascript는 싱글 스레드라서 기본적으로 병행처리가 불가능함)
 // 비동기 : Thread가 순서대로 실행하지 않고 JS 엔진의 Call Stack와 브라우저엔진, callback Queue를 사용하여 병행처리하는 방법
 // setTimeout을 이용한 비동기 처리 (165라인, 163라인, 162라인 순으로 실행)
@@ -38,9 +38,9 @@ taskA(5, 4, (a_result)=>{
 
 console.log("코드 끝");
 
-// 9. promise : 비동기 처리를 더 간단하고 직관적으로 돕는 문법
+// 2. promise : 비동기 처리를 더 간단하고 직관적으로 돕는 문법
 
-// 9.1 resolve, reject : 비동기 처리의 성공, 실패시 출력값을 결정
+// 2.1 resolve, reject : 비동기 처리의 성공, 실패시 출력값을 결정
 // 대기(pending)상태에서 해결(resolve)시 성공(Fulfilled), 거부(reject)시 Rejected상태가 되고 종료됨
 // 
 function isPositive(number,resolve, reject){
@@ -90,7 +90,7 @@ res.then((result) => {
   console.log("작업 실패 : ", error);
 })
 
-// promise를 이용하여 앞선 task의 콜백지옥 해결
+// 2.2 promise를 이용하여 앞선 task의 콜백지옥 해결
 // function taskA(a, b, cb){
 //   setTimeout(() => {
 //     const result = a + b;
@@ -177,3 +177,38 @@ promiseTaskA(10,4)
 //   .then((c_result) => {
 //     console.log("C RESULT : ", c_result);
 //   })
+
+
+// 3. async & await : promise를 더 쉽게 사용할 문법
+async function helloAsync(){
+  return "안녕하세요 Async!";
+}
+console.log(helloAsync);  // Promise{pendding} => async를 사용하면 자동적으로 promise를 대기상태로 return 
+// 즉, promise를 사용하는 구조인 then을 사용가능
+helloAsync().then((res) => {
+  console.log(res);
+})
+
+function delay(ms){
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  })
+}
+
+// async function delayedAsync() {
+//   return delay(3000).then(() => {
+//     return "3초 delay"
+//   });
+// }
+
+// 위 코드를 async & await으로 사용가능
+async function delayedAsync(){
+  await delay(3000);
+  return "3초 delay(await 사용)";
+}
+
+delayedAsync().then((res) => {
+  console.log(res);
+})
