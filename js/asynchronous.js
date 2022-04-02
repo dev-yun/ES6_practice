@@ -204,11 +204,20 @@ function delay(ms){
 // }
 
 // 위 코드를 async & await으로 사용가능
+// await을 붙히면 코드가 동기적으로 실행됨 (await delay가 끝날때까지 기다렸다가 return "3초 delay" 수행)
 async function delayedAsync(){
   await delay(3000);
   return "3초 delay(await 사용)";
 }
 
-delayedAsync().then((res) => {
+// delayedAsync().then((res) => {
+//   console.log(res);
+// })
+
+// 위에서 then을 사용한 호출도 async & await으로 동기적 호출이 가능
+async function main(){
+  const res = await delayedAsync();
   console.log(res);
-})
+}
+
+main();
