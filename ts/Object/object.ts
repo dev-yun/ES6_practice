@@ -43,6 +43,17 @@ const myObj = Object.create(null, {
     }
 })
 
+// 4. function의 반환값을 객체로 표현
+type blood = { bloodType : string};
+
+function person(bloodType : string) : blood{
+    return {
+        bloodType
+    };
+}
+
+person("B")
+
 
 // 객체의 속성과 속성 값을 바꾸지 못하게 하는 방법
 // 1. 타입 스크립트인 경우 => 타입을 생성하여 필수 타입들을 명시함으로써 속성을 지우지 못하게 한다.
