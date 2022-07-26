@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Debug App",
+            // 디버거 전 작업 내용(tasks.json의 label명과 같아야함)
+            "preLaunchTask": "parcel webapp",
+            "url": "http://localhost:1234",
+            // parcel.js가 번들링한 파일을 저장할 루트 => 웹서버의 루트로 최상위 디렉터리
+            "webRoot": "${workspaceFolder}/dist"
+        }
+    ]
+}
