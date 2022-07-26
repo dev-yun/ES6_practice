@@ -3,8 +3,8 @@
 
 // 1. Array의 메서드를 사용하여 구현
 const simpleCamel = (text, splitter = ' ') => text.split(splitter)
-                        .map((word, widx)=> word.split(' ')
-                            .map((c, cidx) => widx > 0 && cidx === 0 ? c.toUpperCase() :c.toLowerCase())
+                        .map((word, widx)=> word.split('')
+                            .map((c, cidx) => widx > 0 && cidx === 0 ? c.toUpperCase() : c.toLowerCase())
                             .join(''))
                         .join('');
 
